@@ -28,7 +28,7 @@ public class DisplayManager {
 			e.printStackTrace();
 		}
 		//tell Opengl to use all Display Window
-		GL11.glViewport(0, 0, WIDTH, HEIGHT);
+		GL11.glViewport( 0, 0, WIDTH, HEIGHT);
 	}
 	
 	public static void updateDisplay() {
