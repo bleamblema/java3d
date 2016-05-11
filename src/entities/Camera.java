@@ -12,9 +12,25 @@ public class Camera {
 	
 	public Camera() {}
 	
+	public void setPosition(Vector3f position) {
+		this.position = position;
+	}
+
+	public void setPitch(float pitch) {
+		this.pitch = pitch;
+	}
+
+	public void setYaw(float yaw) {
+		this.yaw = yaw;
+	}
+
+	public void setRoll(float roll) {
+		this.roll = roll;
+	}
+
 	public void move() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)){
-			position.z -= 0.02f;
+			position.y += 0.02f;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)){
 			position.x += 0.02f;
@@ -23,7 +39,13 @@ public class Camera {
 			position.x -= 0.02f;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)){
+			position.y -= 0.02f;
+		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_Q)){
 			position.z += 0.02f;
+		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_E)){
+			position.z -= 0.02f;
 		}
 	}
 
