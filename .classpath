@@ -7,7 +7,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="G:/java3D/lib/natives-win"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="G:/java3D/lib/jars/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="G:/java3D/lib/jars/slick-util.jar"/>
+	<classpathentry kind="lib" path="G:/java3D/lib/jars/PNGDecoder.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

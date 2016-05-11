@@ -1,8 +1,11 @@
 package renderEngine;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -17,6 +20,11 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
+
+import de.matthiasmann.twl.utils.PNGDecoder;
+import de.matthiasmann.twl.utils.PNGDecoder.Format;
+
+
 
 
 
@@ -49,16 +57,24 @@ public class Loader {
 		}
 	}
 	
-	public int loadTexture(String fileName){
-		Texture texture = null;
-		try {
-			texture = TextureLoader.getTexture("png", new FileInputStream("res/" + fileName + ".png"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		int textureID = texture.getTextureID();
+	public int loadTexture(String fileName) throws IOException { 
+		InputStream in = new FileInputStream("res/" + fileName + ".png");
+		PNGDecoder decoder = new PNGDecoder(in); 
+		ByteBuffer buffer = ByteBuffer.allocateDirect(4 * decoder.getWidth() * decoder.getHeight());
+		decoder.decode(buffer, decoder.getWidth() * 4, Format.RGBA);
+		buffer.flip();
+
+		int textureID = GL11.glGenTextures();		
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, textureID);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+		GL30.glGenerateMipmap(textureID); 
+		
+		GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, decoder.getWidth(), decoder.getHeight(), 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buffer);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0); 
+		
 		textures.add(textureID);
 		return textureID;
 	}

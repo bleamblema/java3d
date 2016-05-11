@@ -1,5 +1,7 @@
 package engineTester;
 
+import java.io.IOException;
+
 import models.RawModel;
 import models.TexturedModel;
 
@@ -26,7 +28,13 @@ public class MainGameLoop {
 		float[] texutureCoords = { 0,0, 0,1, 1,1, 1,0 };
 		
 		RawModel model = loader.loadToVAO(vertices, texutureCoords, indices);
-		int textureID= loader.loadTexture("image");
+		int textureID = 0;
+		try {
+			textureID = loader.loadTexture("image");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(-1);
+		}
 		ModelTexture texture = new ModelTexture(textureID);
 		TexturedModel texturedModel = new TexturedModel(model, texture);
 		
