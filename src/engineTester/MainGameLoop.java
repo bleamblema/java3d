@@ -38,7 +38,12 @@ public class MainGameLoop {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+		
+		
+		
 		ModelTexture texture = new ModelTexture(textureID);
+		texture.setShineDamper(10);
+		texture.setReflectivity(1);
 		TexturedModel staticModel = new TexturedModel(model, texture);
 		
 		Entity entity = new Entity(staticModel, new Vector3f(0,0,-50), 0, 0, 0, 1);
