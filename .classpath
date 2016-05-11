@@ -9,5 +9,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="G:/java3D/lib/jars/slick-util.jar"/>
 	<classpathentry kind="lib" path="G:/java3D/lib/jars/PNGDecoder.jar"/>
+	<classpathentry kind="lib" path="G:/java3D/lib/jars/lwjgl_util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
