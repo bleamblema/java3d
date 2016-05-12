@@ -13,7 +13,7 @@ import org.lwjgl.util.vector.Vector3f;
 
 import shaders.TerrainShader;
 import terrains.Terrain;
-import terrains.TerrainTexturePack;
+import textures.TerrainTexturePack;
 import toolbox.Maths;
 
 public class TerrainRenderer {

@@ -12,6 +12,8 @@ import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 import renderEngine.Loader;
+import textures.TerrainTexture;
+import textures.TerrainTexturePack;
 import toolbox.Maths;
 
 public class Terrain {
@@ -106,11 +108,11 @@ public class Terrain {
 	int vertexPointer = 0;
 	for(int i=0;i<VERTEX_COUNT;i++){
 		for(int j=0;j<VERTEX_COUNT;j++){
-			vertices[vertexPointer*3] = -(float)j/((float)VERTEX_COUNT - 1) * SIZE;
+			vertices[vertexPointer*3] = (float)j/((float)VERTEX_COUNT - 1) * SIZE;
 			float height = getHeight(j, i, image);
 			heights[j][i] = height;
 			vertices[vertexPointer*3+1] = height; 
-			vertices[vertexPointer*3+2] = -(float)i/((float)VERTEX_COUNT - 1) * SIZE;
+			vertices[vertexPointer*3+2] = (float)i/((float)VERTEX_COUNT - 1) * SIZE;
 			Vector3f normal = calculateNormal(j, i, image);
 			normals[vertexPointer*3] = normal.x;
 			normals[vertexPointer*3+1] = normal.y;

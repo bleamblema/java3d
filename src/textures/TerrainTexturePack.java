@@ -1,13 +1,16 @@
 package textures;
 
-public class TerrainTexturePack {
 
+public class TerrainTexturePack {
+	
 	private TerrainTexture backgroundTexture;
 	private TerrainTexture rTexture;
 	private TerrainTexture gTexture;
 	private TerrainTexture bTexture;
 
-	public TerrainTexturePack(TerrainTexture backgroundTexture, TerrainTexture rTexture, TerrainTexture gTexture, TerrainTexture bTexture) {
+	public TerrainTexturePack(TerrainTexture backgroundTexture,
+			TerrainTexture rTexture, TerrainTexture gTexture,
+			TerrainTexture bTexture) {
 		this.backgroundTexture = backgroundTexture;
 		this.rTexture = rTexture;
 		this.gTexture = gTexture;
