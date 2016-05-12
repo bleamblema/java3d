@@ -1,7 +1,6 @@
 package renderEngine;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
@@ -16,6 +15,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
+
 import de.matthiasmann.twl.utils.PNGDecoder;
 import de.matthiasmann.twl.utils.PNGDecoder.Format;
 
@@ -54,14 +54,16 @@ public class Loader {
 		}
 	}
 	
-	public int loadTexture(String fileName) throws IOException { 
+	public int loadTexture(String fileName) { 
+		int textureID = -1;
+		try {
 		InputStream in = new FileInputStream("res/" + fileName + ".png");
 		PNGDecoder decoder = new PNGDecoder(in); 
 		ByteBuffer buffer = ByteBuffer.allocateDirect(4 * decoder.getWidth() * decoder.getHeight());
 		decoder.decode(buffer, decoder.getWidth() * 4, Format.RGBA);
 		buffer.flip();
 
-		int textureID = GL11.glGenTextures();		
+		textureID = GL11.glGenTextures();		
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, textureID);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
@@ -73,6 +75,9 @@ public class Loader {
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0); 
 		
 		textures.add(textureID);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return textureID;
 	}
 	
