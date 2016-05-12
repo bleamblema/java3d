@@ -68,8 +68,6 @@ public class MainGameLoop {
 		Terrain terrain = new Terrain(0, 0, loader, texturePack, blendMap);
 		Terrain terrain2 = new Terrain(1, 0, loader, texturePack, blendMap);
 
-		Camera camera = new Camera();
-		camera.setPosition(new Vector3f(0,10,0));
 		MasterRenderer renderer = new MasterRenderer();
 		
 		RawModel bunnyModel = OBJLoader.loadObjModel("stanfordBunny", loader);
@@ -77,6 +75,9 @@ public class MainGameLoop {
 				loader.loadTexture("white")));
 		
 		Player player = new Player(stanfordBunny, new Vector3f(0, 0, -50), 0,0,0,0.5f);
+
+		Camera camera = new Camera(player);
+		//camera.setPosition(new Vector3f(0,10,0));
 
 		while (!Display.isCloseRequested()) {
 			camera.move();
