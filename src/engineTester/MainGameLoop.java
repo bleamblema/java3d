@@ -110,7 +110,7 @@ public class MainGameLoop {
 		entities.add(new Entity(lamp, new Vector3f(370, 4.2f, -300), 0, 0, 0, 1));
 		entities.add(new Entity(lamp, new Vector3f(293, -6.8f, -305), 0, 0, 0, 1));
 
-		MasterRenderer renderer = new MasterRenderer();
+		MasterRenderer renderer = new MasterRenderer(loader);
 
 		RawModel playerModel = OBJLoader.loadObjModel("player", loader);
 		TexturedModel playerTexturedModel = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("playerTexture")));
@@ -133,7 +133,7 @@ public class MainGameLoop {
 				renderer.processEntity(entity);
 			}
 			renderer.render(lights, camera);
-			guiRenderer.render(guis);
+			//guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
 		}
 
