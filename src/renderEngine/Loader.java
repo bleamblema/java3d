@@ -21,9 +21,6 @@ import de.matthiasmann.twl.utils.PNGDecoder;
 import de.matthiasmann.twl.utils.PNGDecoder.Format;
 
 
-
-
-
 public class Loader {
 	
 	private List<Integer> vaos = new ArrayList<Integer>();
@@ -41,6 +38,13 @@ public class Loader {
 		storeDataInAttributeList(2, 3, normals);
 		unbindVAO();
 		return new RawModel(vaoID, indices.length);
+	}
+	
+	public RawModel loadToVAO(float[] positions){
+		int vaoID = createVAO();
+		this.storeDataInAttributeList(0, 2, positions);
+		unbindVAO();
+		return new RawModel(vaoID, positions.length/2);
 	}
 	
 	public void cleanUp() {
