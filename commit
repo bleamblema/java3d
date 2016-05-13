@@ -1,0 +1,202 @@
+[33m965d752[m HEAD@{0}: reset: moving to ORIG_HEAD
+[33mb8099ad[m HEAD@{1}: reset: moving to ORIG_HEAD
+[33m965d752[m HEAD@{2}: checkout: moving from fix_rebase to master
+[33m965d752[m HEAD@{3}: reset: moving to ORIG_HEAD
+[33mb8099ad[m HEAD@{4}: reset: moving to ORIG_HEAD
+[33m965d752[m HEAD@{5}: reset: moving to ORIG_HEAD
+[33mb8099ad[m HEAD@{6}: reset: moving to ORIG_HEAD
+[33m965d752[m HEAD@{7}: checkout: moving from master to fix_rebase
+[33m965d752[m HEAD@{8}: checkout: moving from master to master
+[33m965d752[m HEAD@{9}: checkout: moving from 99a910bd868e0647b85aca7c671345d95be27f3d to master
+[33m99a910b[m HEAD@{10}: checkout: moving from ee39e0f4bd2af3e376dc98339b149595b64e1ee9 to 99a910b
+[33mee39e0f[m HEAD@{11}: checkout: moving from 759b305072f0158e70a94018340906945dbb3de7 to ee39e0f
+[33m759b305[m HEAD@{12}: checkout: moving from a45eee316877c825c28e3b45629737a09cee7ade to 759b305
+[33ma45eee3[m HEAD@{13}: checkout: moving from master to a45eee3
+[33m965d752[m HEAD@{14}: checkout: moving from fix-fog to master
+[33mdb0cd4d[m HEAD@{15}: commit: fix fog
+[33m6be1d56[m HEAD@{16}: checkout: moving from 6be1d5685dc0875a47b1e8bfd06bbfa64dd38388 to fix-fog
+[33m6be1d56[m HEAD@{17}: checkout: moving from a45eee316877c825c28e3b45629737a09cee7ade to 6be1d56
+[33ma45eee3[m HEAD@{18}: checkout: moving from 6be1d5685dc0875a47b1e8bfd06bbfa64dd38388 to a45eee3
+[33m6be1d56[m HEAD@{19}: checkout: moving from 037fe0e9bc4783e5ae1b59f37866c5aae6ca8a57 to 6be1d56
+[33m037fe0e[m HEAD@{20}: checkout: moving from 0b0573876d8938d58f4146de8e7db9297385dac8 to 037fe0e
+[33m0b05738[m HEAD@{21}: checkout: moving from e28140ed188ff2cedb8481792986f05faddc158c to 0b05738
+[33me28140e[m HEAD@{22}: checkout: moving from 3525866295ead0eb9cadf03d9751a8ee452eca67 to e28140e
+[33m3525866[m HEAD@{23}: checkout: moving from f98186a9d18bb5356ebbbaf1724153c6a4a519e2 to 3525866
+[33mf98186a[m HEAD@{24}: checkout: moving from d49b46a18adc29fafeb9ea60e160a9401b21a422 to f98186a
+[33md49b46a[m HEAD@{25}: checkout: moving from 71ddeb4871935d3f3557aa284dbb0af5c85240cf to d49b46a
+[33m71ddeb4[m HEAD@{26}: checkout: moving from f7b03949f5999c53748313f6cbdc8abfedeed5d0 to 71ddeb4
+[33mf7b0394[m HEAD@{27}: checkout: moving from master to f7b0394
+[33m965d752[m HEAD@{28}: rebase -i (finish): returning to refs/heads/master
+[33m965d752[m HEAD@{29}: rebase -i (pick): Mouse Picking
+[33m32075d7[m HEAD@{30}: rebase -i (pick): Day/Night
+[33m7d8d8a9[m HEAD@{31}: rebase -i (pick): Skybox
+[33m45b0110[m HEAD@{32}: rebase -i (pick): Point Lights
+[33m3b54703[m HEAD@{33}: rebase -i (pick): Multiple Lights
+[33m37de18b[m HEAD@{34}: rebase -i (pick): Rundering GUIs
+[33m9099fce[m HEAD@{35}: rebase -i (pick): Texture Atlases
+[33m99a910b[m HEAD@{36}: rebase -i (pick): Terrain Collision Detection
+[33mee39e0f[m HEAD@{37}: rebase -i (pick): Terrain Height Maps
+[33mab601f6[m HEAD@{38}: rebase -i (pick): Mipmapping
+[33mbc3fed6[m HEAD@{39}: rebase -i (pick): 3 person camera
+[33m759b305[m HEAD@{40}: rebase -i (pick): Player Movement
+[33ma45eee3[m HEAD@{41}: rebase -i (pick): Multitexturing
+[33m6be1d56[m HEAD@{42}: rebase -i (pick): Fog
+[33m037fe0e[m HEAD@{43}: rebase -i (pick): Transparency
+[33m0b05738[m HEAD@{44}: rebase -i (reword): Simple Terrain
+[33mc5cc9cc[m HEAD@{45}: rebase -i (reword): terrain fix 2
+[33me28140e[m HEAD@{46}: rebase -i (pick): Optimizing
+[33m3525866[m HEAD@{47}: rebase -i (pick): Specular Lighting
+[33mf98186a[m HEAD@{48}: rebase -i (pick): Per pixel lighting
+[33md49b46a[m HEAD@{49}: rebase -i (pick): loading 3d models
+[33mfae5aa0[m HEAD@{50}: rebase -i (pick): Model view & projection matrices
+[33mae44442[m HEAD@{51}: rebase -i (pick): Matrices & Uniform Variables
+[33m71ddeb4[m HEAD@{52}: rebase -i (reword): Texturing
+[33m0f7a360[m HEAD@{53}: cherry-pick: fast-forward
+[33mf7b0394[m HEAD@{54}: rebase -i (start): checkout f7b0394
+[33mb8099ad[m HEAD@{55}: checkout: moving from 469e5d39dfa149dfe1176231e294acf235eb6401 to master
+[33m469e5d3[m HEAD@{56}: rebase -i (pick): Matrices & Uniform Variables
+[33mdade424[m HEAD@{57}: rebase -i (reword): Texturing
+[33m0f7a360[m HEAD@{58}: cherry-pick: fast-forward
+[33mf7b0394[m HEAD@{59}: rebase -i (start): checkout f7b0394
+[33m1edfe00[m HEAD@{60}: checkout: moving from 0f7a360d534fa31e1526d4ad282071e74fe879be to 1edfe00
+[33m0f7a360[m HEAD@{61}: checkout: moving from f7b03949f5999c53748313f6cbdc8abfedeed5d0 to 0f7a360
+[33mf7b0394[m HEAD@{62}: checkout: moving from 0154b3edba8c40f9988dd4078a31bd04dc3076c5 to f7b0394
+[33m0154b3e[m HEAD@{63}: checkout: moving from fb00f3b931d9c5eaa192eb28e79eb8ce899cd449 to 0154b3e
+[33mfb00f3b[m HEAD@{64}: checkout: moving from ebed53d378ed329d21aaa2261aa8577267c793c8 to fb00f3b
+[33mebed53d[m HEAD@{65}: checkout: moving from master to ebed53d
+[33mb8099ad[m HEAD@{66}: rebase -i (finish): returning to refs/heads/master
+[33mb8099ad[m HEAD@{67}: rebase -i (pick): Mouse Picking
+[33mc6a4778[m HEAD@{68}: rebase -i (pick): Day/Night
+[33me4a40c3[m HEAD@{69}: rebase -i (pick): Skybox
+[33m69b8c4d[m HEAD@{70}: rebase -i (pick): Point Lights
+[33mc40593c[m HEAD@{71}: rebase -i (pick): Multiple Lights
+[33m411585d[m HEAD@{72}: rebase -i (pick): Rundering GUIs
+[33md698770[m HEAD@{73}: rebase -i (pick): Texture Atlases
+[33me962568[m HEAD@{74}: rebase -i (reword): Terrain Collision Detection
+[33m32e50eb[m HEAD@{75}: cherry-pick: fast-forward
+[33mc114f37[m HEAD@{76}: rebase -i (start): checkout 3abc040
+[33m2e43dcd[m HEAD@{77}: rebase -i (finish): returning to refs/heads/master
+[33m2e43dcd[m HEAD@{78}: rebase -i (pick): Mouse Picking
+[33m49a81ef[m HEAD@{79}: rebase -i (fixup): Day/Night
+[33md415692[m HEAD@{80}: rebase -i (pick): Day/Night
+[33m6d1eb72[m HEAD@{81}: rebase -i (pick): Skybox
+[33ma650329[m HEAD@{82}: rebase -i (pick): Point Lights
+[33md17fb7a[m HEAD@{83}: rebase -i (pick): Multiple Lights
+[33m6733f04[m HEAD@{84}: rebase -i (pick): Rundering GUIs
+[33m56b6e0b[m HEAD@{85}: rebase -i (reword): Texture Atlases
+[33m199f4b6[m HEAD@{86}: rebase -i (reword): texture atlases:fix:res/fern.png not transparent
+[33m32e50eb[m HEAD@{87}: rebase -i (fixup): Terrain Height Maps
+[33m31eada6[m HEAD@{88}: rebase -i (fixup): # This is a combination of 3 commits.
+[33mee1c293[m HEAD@{89}: rebase -i (fixup): # This is a combination of 2 commits.
+[33m35b4018[m HEAD@{90}: rebase -i (reword): Terrain Height Maps
+[33m2a94276[m HEAD@{91}: rebase -i (reword): fix unseen terrainTexture
+[33mc114f37[m HEAD@{92}: rebase -i (fixup): Terrain Height Maps
+[33m0ef04ba[m HEAD@{93}: rebase -i (fixup): # This is a combination of 2 commits.
+[33m81d00ae[m HEAD@{94}: rebase -i (pick): Terrain Height Maps
+[33m89b0351[m HEAD@{95}: rebase -i (reword): Mipmapping
+[33mfb133ef[m HEAD@{96}: rebase -i (reword): min mapping
+[33m3abc040[m HEAD@{97}: rebase -i (pick): 3 person camera
+[33m41d9ec0[m HEAD@{98}: rebase -i (pick): Player Movement
+[33me8e8e3f[m HEAD@{99}: rebase -i (reword): Multitexturing
+[33mcbc79fd[m HEAD@{100}: rebase -i (reword): fix multiple texture with terrain position
+[33m692e038[m HEAD@{101}: rebase -i (fixup): Fog
+[33m2b37e72[m HEAD@{102}: rebase -i (fixup): # This is a combination of 2 commits.
+[33m469aef5[m HEAD@{103}: rebase -i (pick): Fog
+[33m9b08924[m HEAD@{104}: rebase -i (pick): Transparency
+[33m91fa2f5[m HEAD@{105}: rebase -i (reword): terrain fix 2
+[33m50623e2[m HEAD@{106}: rebase -i (fixup): Optimizing
+[33mecb2b32[m HEAD@{107}: rebase -i (fixup): # This is a combination of 2 commits.
+[33ma29516f[m HEAD@{108}: rebase -i (pick): Optimizing
+[33m65bca41[m HEAD@{109}: rebase -i (pick): Specular Lighting
+[33mc797774[m HEAD@{110}: rebase -i (pick): Per pixel lighting
+[33mba3e9a6[m HEAD@{111}: rebase -i (pick): loading 3d models
+[33m68b532e[m HEAD@{112}: rebase -i (pick): Model view & projection matrices
+[33m1edfe00[m HEAD@{113}: rebase -i (pick): Matrices & Uniform Variables
+[33m0f7a360[m HEAD@{114}: rebase -i (reword): Simple Terrain
+[33m9ac5fb8[m HEAD@{115}: rebase -i (reword): fix texture
+[33mf7b0394[m HEAD@{116}: rebase -i (fixup): Coloring using shaders
+[33mf04b6a4[m HEAD@{117}: rebase -i (start): checkout ebed53d
+[33m42c8c50[m HEAD@{118}: commit: Mouse Picking
+[33m629b9dc[m HEAD@{119}: commit: pick problem
+[33mc4d082b[m HEAD@{120}: commit: Day/Night
+[33meaa89fc[m HEAD@{121}: commit: Skybox
+[33mcbca16b[m HEAD@{122}: commit: Point Lights
+[33m25c7128[m HEAD@{123}: rebase -i (finish): returning to refs/heads/master
+[33m25c7128[m HEAD@{124}: rebase -i (pick): Multiple Lights
+[33m4fc4f9f[m HEAD@{125}: rebase -i (reword): Rundering GUIs
+[33ma935d8f[m HEAD@{126}: cherry-pick: fast-forward
+[33m3880cd0[m HEAD@{127}: rebase -i (start): checkout HEAD~3
+[33m37bf6ac[m HEAD@{128}: commit (amend): Multiple Lights
+[33m1553459[m HEAD@{129}: commit: Multiple Lights
+[33ma935d8f[m HEAD@{130}: commit: Gui
+[33m3880cd0[m HEAD@{131}: commit: texture atlases:fix:res/fern.png not transparent
+[33m9310d99[m HEAD@{132}: checkout: moving from c27f7d8641dfa83ff23848a31bdd7a69b48013ed to master
+[33mc27f7d8[m HEAD@{133}: checkout: moving from master to c27f7d8
+[33m9310d99[m HEAD@{134}: commit: add file
+[33m39d04fe[m HEAD@{135}: checkout: moving from c27f7d8641dfa83ff23848a31bdd7a69b48013ed to master
+[33mc27f7d8[m HEAD@{136}: checkout: moving from master to c27f7d8
+[33m39d04fe[m HEAD@{137}: commit: add file
+[33md9467f4[m HEAD@{138}: checkout: moving from d9467f47bb6c8206438558612b87313c7ee8d0fe to master
+[33md9467f4[m HEAD@{139}: checkout: moving from c27f7d8641dfa83ff23848a31bdd7a69b48013ed to d9467f4
+[33mc27f7d8[m HEAD@{140}: checkout: moving from master to c27f7d8
+[33md9467f4[m HEAD@{141}: commit: texture atlases:problem
+[33mc27f7d8[m HEAD@{142}: commit: fix unseen terrainTexture
+[33m8d0282a[m HEAD@{143}: checkout: moving from texttexture to master
+[33m3ad5eea[m HEAD@{144}: commit: fix terraintexture
+[33mf333c9f[m HEAD@{145}: commit: modify
+[33mae1fee0[m HEAD@{146}: commit: change packet
+[33mf36f71f[m HEAD@{147}: checkout: moving from f36f71f4bc3adcef72590a8efc377815d00ca2d8 to texttexture
+[33mf36f71f[m HEAD@{148}: checkout: moving from master to f36f71f
+[33m8d0282a[m HEAD@{149}: commit: try to fix terrain texture:
+[33mf36f71f[m HEAD@{150}: commit: terrain collision Detect
+[33m0747d78[m HEAD@{151}: commit: Terrain Height Maps
+[33m253d0ee[m HEAD@{152}: commit: min mapping
+[33mfaf43b2[m HEAD@{153}: commit: 3 person camera
+[33m33b6051[m HEAD@{154}: commit: Player Movement
+[33med55b20[m HEAD@{155}: commit: fix multiple texture with terrain position
+[33mdd810da[m HEAD@{156}: checkout: moving from fix_multi to master
+[33m0bd5df0[m HEAD@{157}: commit: delete all
+[33md21195b[m HEAD@{158}: checkout: moving from master to fix_multi
+[33mdd810da[m HEAD@{159}: checkout: moving from fix_multi to master
+[33md21195b[m HEAD@{160}: commit: edit terrainrender2
+[33m2033690[m HEAD@{161}: commit: edit terrainrender
+[33me30c16e[m HEAD@{162}: checkout: moving from master to fix_multi
+[33mdd810da[m HEAD@{163}: checkout: moving from fix_multi to master
+[33me30c16e[m HEAD@{164}: commit: edit terrain.java
+[33m21f1b6c[m HEAD@{165}: checkout: moving from master to fix_multi
+[33mdd810da[m HEAD@{166}: checkout: moving from fix_multi to master
+[33m21f1b6c[m HEAD@{167}: commit: edit terrainF
+[33m3f0e574[m HEAD@{168}: checkout: moving from 3f0e574199580be3d48ece07cbe56395623e2933 to fix_multi
+[33m3f0e574[m HEAD@{169}: checkout: moving from master to 3f0e574
+[33mdd810da[m HEAD@{170}: checkout: moving from 3f0e574199580be3d48ece07cbe56395623e2933 to master
+[33m3f0e574[m HEAD@{171}: checkout: moving from master to 3f0e574
+[33mdd810da[m HEAD@{172}: checkout: moving from dd810daed3f4a4b3121c16688268a3b76d0a9b2d to master
+[33mdd810da[m HEAD@{173}: checkout: moving from 3f1a93fd18df580c4f194ae792dcc36b135212b1 to dd810da
+[33m3f1a93f[m HEAD@{174}: checkout: moving from 3f0e574199580be3d48ece07cbe56395623e2933 to 3f1a93f
+[33m3f0e574[m HEAD@{175}: checkout: moving from master to 3f0e574
+[33mdd810da[m HEAD@{176}: commit: add texture
+[33m3f1a93f[m HEAD@{177}: commit: Multitexturing
+[33m3f0e574[m HEAD@{178}: commit: Fog
+[33m128f942[m HEAD@{179}: commit: Transparency
+[33mff83b06[m HEAD@{180}: commit: terrain fix 2
+[33m910fc5a[m HEAD@{181}: commit: fix terrain
+[33mff9da1f[m HEAD@{182}: reset: moving to ff9da1f
+[33m271f238[m HEAD@{183}: checkout: moving from fix_terrain to master
+[33meafce81[m HEAD@{184}: checkout: moving from master to fix_terrain
+[33m271f238[m HEAD@{185}: checkout: moving from eafce81f3f7dfdab2c4b1199ff68308304afb90d to master
+[33meafce81[m HEAD@{186}: commit: fix simple terrain
+[33mff9da1f[m HEAD@{187}: checkout: moving from master to ff9da1f
+[33m271f238[m HEAD@{188}: commit: tut fix terrain
+[33mff9da1f[m HEAD@{189}: commit: simple terrain
+[33m3b012ea[m HEAD@{190}: commit: Optimizing
+[33ma253b88[m HEAD@{191}: commit: Specular Lighting
+[33m3f6de35[m HEAD@{192}: commit: Per pixel lighting
+[33mceb70c3[m HEAD@{193}: commit: loading 3d models
+[33md1ac002[m HEAD@{194}: commit: Model view & projection matrices
+[33md2d40c2[m HEAD@{195}: commit: Matrices & Uniform Variables
+[33me46ffd8[m HEAD@{196}: commit: fix texture
+[33mf7e0d82[m HEAD@{197}: commit: texturing
+[33mf04b6a4[m HEAD@{198}: commit: Coloring using shaders
+[33m0154b3e[m HEAD@{199}: commit: Rendering with index buffers
+[33mfb00f3b[m HEAD@{200}: commit: VAOS and VBOS
+[33mebed53d[m HEAD@{201}: commit (initial): The Display
