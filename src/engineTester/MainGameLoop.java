@@ -102,18 +102,14 @@ public class MainGameLoop {
 		lights.add(light);
 
 		// *********Water Renderer Set-up*********
+		WaterFrameBuffers buffers = new WaterFrameBuffers();
 
 		WaterShader waterShader = new WaterShader();
 		WaterRenderer waterRenderer = new WaterRenderer(loader, waterShader,
-				renderer.getProjectionMatrix());
+				renderer.getProjectionMatrix(), buffers);
 		List<WaterTile> waters = new ArrayList<WaterTile>();
 		waters.add(new WaterTile(75, -75, 0));
 
-		WaterFrameBuffers fbos = new WaterFrameBuffers();
-		GuiTexture refraction = new GuiTexture(fbos.getRefractionTexture(), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f));
-		GuiTexture reflection = new GuiTexture(fbos.getReflectionTexture(), new Vector2f(-0.5f, 0.5f), new Vector2f(0.25f, 0.25f));
-		guis.add(refraction);
-		guis.add(reflection);
 		// ***************************************
 
 		while (!Display.isCloseRequested()) {
@@ -124,7 +120,7 @@ public class MainGameLoop {
 			
 			GL11.glEnable(GL30.GL_CLIP_DISTANCE0);
 
-			fbos.bindReflectionFrameBuffer();
+			buffers.bindReflectionFrameBuffer();
 			float distance = 2 * (camera.getPosition().y-waters.get(0).getHeight());
 			camera.getPosition().y -= distance;
 			camera.invertPitch();
@@ -132,18 +128,18 @@ public class MainGameLoop {
 			camera.getPosition().y += distance;
 			camera.invertPitch();
 			
-			fbos.bindRefractionFrameBuffer();
+			buffers.bindRefractionFrameBuffer();
 			renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, waters.get(0).getHeight()));
 			
 			GL11.glDisable(GL30.GL_CLIP_DISTANCE0);
-			fbos.unbindCurrentFrameBuffer();
+			buffers.unbindCurrentFrameBuffer();
 			renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, 10000));
 			waterRenderer.render(waters, camera);
 			guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
 		}
 
-		fbos.cleanUp();
+		buffers.cleanUp();
 		waterShader.cleanUp();
 		guiRenderer.cleanUp();
 		renderer.cleanUp();
