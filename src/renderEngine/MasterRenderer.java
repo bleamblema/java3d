@@ -10,6 +10,7 @@ import models.TexturedModel;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector4f;
 
 import shaders.StaticShader;
 import shaders.TerrainShader;
@@ -58,7 +59,18 @@ public class MasterRenderer {
 		GL11.glDisable(GL11.GL_CULL_FACE);
 	}
 	
-	public void render(List<Light> lights, Camera camera){
+	public void renderScene(List<Entity> entities, List<Terrain> terrains,
+				List<Light> lights, Camera camera, Vector4f clipPlane){
+		for(Terrain terrain : terrains){
+			processTerrain(terrain);
+		}
+		for(Entity entity : entities){
+			processEntity(entity);
+		}
+		render(lights, camera, clipPlane);
+	}
+	
+	public void render(List<Light> lights, Camera camera, Vector4f clipPlane){
 		prepare();
 		shader.start();
 		shader.loadSkyColour(RED, GREEN, BLUE);
@@ -72,7 +84,7 @@ public class MasterRenderer {
 		terrainShader.loadViewMatrix(camera);
 		terrainRenderer.render(terrains);
 		terrainShader.stop();
-		skyboxRenderer.render(camera, RED, GREEN, BLUE);
+		skyboxRenderer.render(camera, 1f, 183/256f, 193/256f);
 		terrains.clear();
 		entities.clear();
 	}
