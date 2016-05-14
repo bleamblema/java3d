@@ -8,8 +8,11 @@ import models.RawModel;
 import models.TexturedModel;
 
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.util.vector.Vector4f;
 
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
@@ -107,10 +110,10 @@ public class MainGameLoop {
 		waters.add(new WaterTile(75, -75, 0));
 
 		WaterFrameBuffers fbos = new WaterFrameBuffers();
-
-		GuiTexture gui = new GuiTexture(fbos.getReflectionTexture(),
-				new Vector2f(-0.5f, 0.5f), new Vector2f(0.5f, 0.5f));
-		guis.add(gui);
+		GuiTexture refraction = new GuiTexture(fbos.getRefractionTexture(), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f));
+		GuiTexture reflection = new GuiTexture(fbos.getReflectionTexture(), new Vector2f(-0.5f, 0.5f), new Vector2f(0.25f, 0.25f));
+		guis.add(refraction);
+		guis.add(reflection);
 		// ***************************************
 
 		while (!Display.isCloseRequested()) {
@@ -118,13 +121,23 @@ public class MainGameLoop {
 			camera.move();
 			picker.update();
 			// renderer.processEntity(player);
+			
+			GL11.glEnable(GL30.GL_CLIP_DISTANCE0);
 
 			fbos.bindReflectionFrameBuffer();
-			renderer.renderScene(entities, terrains, lights, camera);
+			float distance = 2 * (camera.getPosition().y-waters.get(0).getHeight());
+			camera.getPosition().y -= distance;
+			camera.invertPitch();
+			renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, 1, 0, -waters.get(0).getHeight()));
+			camera.getPosition().y += distance;
+			camera.invertPitch();
+			
+			fbos.bindRefractionFrameBuffer();
+			renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, waters.get(0).getHeight()));
+			
+			GL11.glDisable(GL30.GL_CLIP_DISTANCE0);
 			fbos.unbindCurrentFrameBuffer();
-
-			renderer.renderScene(entities, terrains, lights, camera);
-
+			renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, 10000));
 			waterRenderer.render(waters, camera);
 			guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
