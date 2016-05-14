@@ -10,7 +10,6 @@ import models.TexturedModel;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
-import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
@@ -73,7 +72,8 @@ public class MainGameLoop {
 		}
 
 		List<Light> lights = new ArrayList<Light>();
-		lights.add(new Light(new Vector3f(0, 1000, -7000), new Vector3f(2, 2, 2)));
+		Light sun = new Light(new Vector3f(0, 1000, -7000), new Vector3f(2, 2, 2)); 
+		lights.add(sun);
 		lights.add(new Light(new Vector3f(185, 10, -293), new Vector3f(2, 0, 0), new Vector3f(1, 0.01f, 0.002f)));
 		lights.add(new Light(new Vector3f(370, 17, -300), new Vector3f(0, 2, 2), new Vector3f(1, 0.01f, 0.002f)));
 		lights.add(new Light(new Vector3f(293, 7, -305), new Vector3f(2, 2, 0), new Vector3f(1, 0.01f, 0.002f)));
@@ -97,8 +97,7 @@ public class MainGameLoop {
 				renderer.getProjectionMatrix(), terrain);
 
 
-		Light light = new Light(new Vector3f(293, 7, -305), new Vector3f(0, 2,
-				2), new Vector3f(1, 0.01f, 0.002f));
+		Light light = new Light(new Vector3f(293, 7, -305), new Vector3f(0, 2, 2), new Vector3f(1, 0.01f, 0.002f));
 		lights.add(light);
 
 		// *********Water Renderer Set-up*********
@@ -134,7 +133,7 @@ public class MainGameLoop {
 			GL11.glDisable(GL30.GL_CLIP_DISTANCE0);
 			buffers.unbindCurrentFrameBuffer();
 			renderer.renderScene(entities, terrains, lights, camera, new Vector4f(0, -1, 0, 10000));
-			waterRenderer.render(waters, camera);
+			waterRenderer.render(waters, camera, sun);
 			guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
 		}
