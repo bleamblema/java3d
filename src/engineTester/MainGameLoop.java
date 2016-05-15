@@ -41,10 +41,10 @@ public class MainGameLoop {
 		Loader loader = new Loader();
 		TextMaster.init(loader);
 
-		FontType font = new FontType(loader.loadTextureAltlas("tahoma"), 
-					new File("res/tahoma.fnt"));
-		GUIText text = new GUIText("This is a test text!", 1, font, new Vector2f(0.5f,0.5f), 0.5f, true);
-		text.setColour(1, 0, 0);
+		FontType font = new FontType(loader.loadTextureAltlas("candara"), 
+					new File("res/candara.fnt"));
+		GUIText text = new GUIText("This is a test text!", 3, font, new Vector2f(0f,0.5f), 1, true);
+		text.setColour(0.1f, 0.1f, 0.1f);
 		
 		// *********TERRAIN TEXTURE STUFF***********
 
