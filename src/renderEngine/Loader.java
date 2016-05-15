@@ -56,7 +56,13 @@ public class Loader {
 		return new RawModel(vaoID, indices.length);
 	}
 	
-	
+	public int loadToVAO(float[] positions, float[] textureCoords){
+		int vaoID = createVAO();
+		storeDataInAttributeList(0, 2, positions);
+		storeDataInAttributeList(1, 2, textureCoords);
+		unbindVAO();
+		return vaoID;
+	}
 	
 	public RawModel loadToVAO(float[] positions, int dimensions){
 		int vaoID = createVAO();
@@ -93,6 +99,34 @@ public class Loader {
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 		GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, -1);
+		GL30.glGenerateMipmap(textureID); 
+		
+		GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, decoder.getWidth(), decoder.getHeight(), 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buffer);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0); 
+		
+		textures.add(textureID);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return textureID;
+	}
+	
+	public int loadTextureAltlas(String fileName) { 
+		int textureID = -1;
+		try {
+		InputStream in = new FileInputStream("res/" + fileName + ".png");
+		PNGDecoder decoder = new PNGDecoder(in); 
+		ByteBuffer buffer = ByteBuffer.allocateDirect(4 * decoder.getWidth() * decoder.getHeight());
+		decoder.decode(buffer, decoder.getWidth() * 4, Format.RGBA);
+		buffer.flip();
+
+		textureID = GL11.glGenTextures();		
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, textureID);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+		GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, 0);
 		GL30.glGenerateMipmap(textureID); 
 		
 		GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, decoder.getWidth(), decoder.getHeight(), 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buffer);

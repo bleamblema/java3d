@@ -1,5 +1,6 @@
 package engineTester;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -26,6 +27,9 @@ import entities.Camera;
 import entities.Entity;
 import entities.Light;
 import entities.Player;
+import fontMeshCreator.FontType;
+import fontMeshCreator.GUIText;
+import fontRendering.TextMaster;
 import guis.GuiRenderer;
 import guis.GuiTexture;
 
@@ -35,7 +39,13 @@ public class MainGameLoop {
 
 		DisplayManager.createDisplay();
 		Loader loader = new Loader();
+		TextMaster.init(loader);
 
+		FontType font = new FontType(loader.loadTextureAltlas("tahoma"), 
+					new File("res/tahoma.fnt"));
+		GUIText text = new GUIText("This is a test text!", 1, font, new Vector2f(0.5f,0.5f), 0.5f, true);
+		text.setColour(1, 0, 0);
+		
 		// *********TERRAIN TEXTURE STUFF***********
 
 		TerrainTexture backgroundTexture = new TerrainTexture(loader.loadTexture("grassy"));
@@ -60,7 +70,7 @@ public class MainGameLoop {
 		fernTexture.setNumberOfRows(2);
 		TexturedModel fern = new TexturedModel(OBJLoader.loadObjModel("fern", loader), fernTexture);
 
-		TexturedModel bobble = new TexturedModel(OBJLoader.loadObjModel("lowPolyTree", loader), new ModelTexture(loader.loadTexture("lowPolyTree")));
+		//TexturedModel bobble = new TexturedModel(OBJLoader.loadObjModel("lowPolyTree", loader), new ModelTexture(loader.loadTexture("lowPolyTree")));
 		TexturedModel lamp = new TexturedModel(OBJLoader.loadObjModel("lamp", loader), new ModelTexture(loader.loadTexture("lamp")));
 
 		grass.getTexture().setHasTransparency(true);
@@ -156,11 +166,12 @@ public class MainGameLoop {
 			renderer.processEntity(player);
 
 			renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, clipPlane);
-
 			//guiRenderer.render(guis);
+			TextMaster.render();
 			DisplayManager.updateDisplay();
 		}
 
+		TextMaster.cleanUp();
 		guiRenderer.cleanUp();
 		renderer.cleanUp();
 		loader.cleanUp();
