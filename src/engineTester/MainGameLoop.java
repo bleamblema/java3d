@@ -16,6 +16,7 @@ import org.lwjgl.util.vector.Vector4f;
 
 import particles.ParticleMaster;
 import particles.ParticleSystem;
+import particles.ParticleTexture;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.MasterRenderer;
@@ -160,7 +161,8 @@ public class MainGameLoop {
 		normalMapEntities.add(new Entity(barrelModel, new Vector3f(75,15,-75),0,0,0,1f));
 		
 		
-		ParticleSystem system = new ParticleSystem(50, 25, 0.3f, 4, 1);
+		ParticleTexture particleTexture = new ParticleTexture(loader.loadTexture("particleAtlas"), 4, false);
+		ParticleSystem system = new ParticleSystem(particleTexture, 40, 25, 0.3f, 4, 1);
 		system.randomizeRotation();
 		system.setDirection(new Vector3f(0, 1, 0), 0.1f);
 		system.setLifeError(0.1f);
@@ -173,7 +175,7 @@ public class MainGameLoop {
 			picker.update();
 			
 			system.generateParticles(player.getPosition());
-			ParticleMaster.update();
+			ParticleMaster.update(camera);
 
 			renderer.processEntity(player);
 			renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, clipPlane);
