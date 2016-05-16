@@ -19,7 +19,7 @@ public class FontShader extends ShaderProgram{
 	}
 
 	@Override
-	protected void getAllUniformLocation() {
+	protected void getAllUniformLocations() {
 		location_colour = super.getUniformLocation("colour");
 		location_translation = super.getUniformLocation("translation");
 	}

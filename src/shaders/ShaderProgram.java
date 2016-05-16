@@ -30,10 +30,10 @@ public abstract class ShaderProgram {
 		bindAttributes();
 		GL20.glLinkProgram(programID);
 		GL20.glValidateProgram(programID);
-		getAllUniformLocation();
+		getAllUniformLocations();
 	}
 	
-	protected abstract void getAllUniformLocation();
+	protected abstract void getAllUniformLocations();
 	
 	protected int getUniformLocation(String uniformName){
 		return GL20.glGetUniformLocation(programID, uniformName);

@@ -56,7 +56,7 @@ public class SkyboxShader extends ShaderProgram{
     }
      
     @Override
-    protected void getAllUniformLocation() {
+    protected void getAllUniformLocations() {
         location_projectionMatrix = super.getUniformLocation("projectionMatrix");
         location_viewMatrix = super.getUniformLocation("viewMatrix");
         location_fogColour = super.getUniformLocation("fogColour");

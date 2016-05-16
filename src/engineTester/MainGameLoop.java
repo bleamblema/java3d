@@ -14,6 +14,8 @@ import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
+import particles.ParticleMaster;
+import particles.ParticleSystem;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.MasterRenderer;
@@ -40,9 +42,10 @@ public class MainGameLoop {
 		DisplayManager.createDisplay();
 		Loader loader = new Loader();
 		TextMaster.init(loader);
-
-		FontType font = new FontType(loader.loadTextureAltlas("candara"), 
-					new File("res/candara.fnt"));
+		MasterRenderer renderer = new MasterRenderer(loader);
+		ParticleMaster.init(loader, renderer.getProjectionMatrix());
+		
+		FontType font = new FontType(loader.loadTextureAltlas("candara"), new File("res/candara.fnt"));
 		GUIText text = new GUIText("This is a test text!", 3, font, new Vector2f(0f,0.5f), 1, true);
 		text.setColour(0.1f, 0.1f, 0.1f);
 		
@@ -128,7 +131,6 @@ public class MainGameLoop {
 		entities.add(new Entity(lamp, new Vector3f(370, getHeight(random, terrain, 370, -300), -300), 0, 0, 0, 1));
 		entities.add(new Entity(lamp, new Vector3f(293, getHeight(random, terrain, 293, -305), -305), 0, 0, 0, 1));
 
-		MasterRenderer renderer = new MasterRenderer(loader);
 
 		RawModel playerModel = OBJLoader.loadObjModel("player", loader);
 		TexturedModel playerTexturedModel = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("playerTexture")));
@@ -158,19 +160,31 @@ public class MainGameLoop {
 		normalMapEntities.add(new Entity(barrelModel, new Vector3f(75,15,-75),0,0,0,1f));
 		
 		
+		ParticleSystem system = new ParticleSystem(50, 25, 0.3f, 4, 1);
+		system.randomizeRotation();
+		system.setDirection(new Vector3f(0, 1, 0), 0.1f);
+		system.setLifeError(0.1f);
+		system.setSpeedError(0.4f);
+		system.setScaleError(0.8f);
 
 		while (!Display.isCloseRequested()) {
 			player.move(terrain);
 			camera.move();
 			picker.update();
-			renderer.processEntity(player);
+			
+			system.generateParticles(player.getPosition());
+			ParticleMaster.update();
 
+			renderer.processEntity(player);
 			renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, clipPlane);
+			
+			ParticleMaster.renderParticle(camera);
 			//guiRenderer.render(guis);
 			TextMaster.render();
 			DisplayManager.updateDisplay();
 		}
 
+		ParticleMaster.cleanUp();
 		TextMaster.cleanUp();
 		guiRenderer.cleanUp();
 		renderer.cleanUp();
