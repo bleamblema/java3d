@@ -59,8 +59,7 @@ public class ParticleRenderer {
 			pointer = 0;
 			float[] vboData = new float[particleList.size() * INSTANCE_DATA_LENGTH];
 			for (Particle particle : particleList) {
-				updateModelViewMatrix(particle.getPosition(), particle.getRotation(), particle.getScale(), viewMatrix,
-							vboData);
+				updateModelViewMatrix(particle.getPosition(), particle.getRotation(), particle.getScale(), viewMatrix, vboData);
 				updateTexCoordInfo(particle, vboData);
 			}
 			loader.updateVbo(vbo, vboData, buffer);
@@ -79,7 +78,6 @@ public class ParticleRenderer {
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
 		shader.loadNumberOfRows(texture.getNumberOfRows());
-		
 	}
 	
 	private void updateModelViewMatrix(Vector3f position, float rotation, float scale, Matrix4f viewMatrix,

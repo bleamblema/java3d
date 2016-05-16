@@ -1,7 +1,6 @@
 package particles;
 
 import org.lwjgl.util.vector.Matrix4f;
-import org.lwjgl.util.vector.Vector2f;
 
 import shaders.ShaderProgram;
 
@@ -10,8 +9,8 @@ public class ParticleShader extends ShaderProgram {
 	private static final String VERTEX_FILE = "src/particles/particleVShader.txt";
 	private static final String FRAGMENT_FILE = "src/particles/particleFShader.txt";
 
-	private int location_projectionMatrix;
 	private int location_numberOfRows;
+	private int location_projectionMatrix;
 
 	public ParticleShader() {
 		super(VERTEX_FILE, FRAGMENT_FILE);
@@ -19,8 +18,8 @@ public class ParticleShader extends ShaderProgram {
 
 	@Override
 	protected void getAllUniformLocations() {
-		location_projectionMatrix = super.getUniformLocation("projectionMatrix");
 		location_numberOfRows = super.getUniformLocation("numberOfRows");
+		location_projectionMatrix = super.getUniformLocation("projectionMatrix");
 	}
 	
 	protected void loadNumberOfRows(float numberOfRows){
@@ -32,7 +31,7 @@ public class ParticleShader extends ShaderProgram {
 		super.bindAttribute(0, "position");
 		super.bindAttribute(1, "modelViewMatrix");
 		super.bindAttribute(5, "texOffsets");
-		super.bindAttribute(6, "position");
+		super.bindAttribute(6, "blendFactor");
 	}
 
 
