@@ -12,6 +12,8 @@ import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
+import postProcessing.Fbo;
+import postProcessing.PostProcessing;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.MasterRenderer;
@@ -77,21 +79,27 @@ public class MainGameLoop {
 		//guiTextures.add(shadowMap);
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 
+		Fbo fbo = new Fbo(Display.getWidth(), Display.getHeight(), Fbo.DEPTH_RENDER_BUFFER);
+		PostProcessing.init(loader);
 		
 		while (!Display.isCloseRequested()) {
 			player.move(terrain);
 			camera.move();
 			
 			renderer.renderShadowMap(entities, sun);
-			
 			renderer.processEntity(player);
+
+			fbo.bindFrameBuffer();
 			renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0f,0f,0f,0f));
+			fbo.unbindFrameBuffer();
+			PostProcessing.doPostProcessing(fbo.getColourTexture());
 			
 			guiRenderer.render(guiTextures);
-			
 			DisplayManager.updateDisplay();
 		}
 
+		PostProcessing.cleanUp();
+		fbo.cleanUp();
 		guiRenderer.cleanUp();
 		renderer.cleanUp();
 		loader.cleanUp();
