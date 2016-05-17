@@ -94,9 +94,10 @@ public class TerrainShader extends ShaderProgram{
 			}else{
 				super.loadVector(location_lightPosition[i], new Vector3f(0, 0, 0));
 				super.loadVector(location_lightColor[i], new Vector3f(0, 0, 0));
-				super.loadVector(location_attenuation[i], new Vector3f(0, 0, 0));
+				super.loadVector(location_attenuation[i], new Vector3f(1, 0, 0));
 			}
 		}
+		
 	}
 	
 	public void loadTransformationMatrix(Matrix4f matrix){

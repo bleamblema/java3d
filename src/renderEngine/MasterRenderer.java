@@ -15,6 +15,7 @@ import org.lwjgl.util.vector.Vector4f;
 
 import shaders.StaticShader;
 import shaders.TerrainShader;
+import shadows.ShadowMapMasterRenderer;
 import skybox.SkyboxRenderer;
 import terrains.Terrain;
 import entities.Camera;
@@ -43,16 +44,18 @@ public class MasterRenderer {
 	private TerrainShader terrainShader = new TerrainShader();
 	
 	private SkyboxRenderer skyboxRenderer;
+	private ShadowMapMasterRenderer shadowMapRenderer;
 	
 	private NormalMappingRenderer normalMapRenderer;
 	
-	public MasterRenderer(Loader loader) {
+	public MasterRenderer(Loader loader, Camera cam) {
 		enableCulling();
 		createProjectionMatrix();
 		renderer = new EntityRenderer(shader, projectionMatrix); 
 		terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
 		skyboxRenderer = new SkyboxRenderer(loader, projectionMatrix);
 		normalMapRenderer = new NormalMappingRenderer(projectionMatrix);
+		this.shadowMapRenderer = new ShadowMapMasterRenderer(cam);
 	}
 	
 	public static void enableCulling() {
@@ -133,10 +136,23 @@ public class MasterRenderer {
 		}
 	}
 	
+	public void renderShadowMap(List<Entity> entityList, Light sun){
+		for(Entity entity : entityList){
+			processEntity(entity);
+		}
+		shadowMapRenderer.render(entities, sun);
+		entities.clear();
+	}
+	
+	public int getShadowMaptexture(){
+		return shadowMapRenderer.getShadowMap();
+	}
+	
 	public void cleanUp() {
 		shader.cleanUp();
 		terrainShader.cleanUp();
 		normalMapRenderer.cleanUp();
+		shadowMapRenderer.cleanUp();
 	}
 
 	public Matrix4f getProjectionMatrix() {
