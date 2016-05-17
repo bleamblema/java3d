@@ -7,7 +7,6 @@ import java.util.Random;
 
 import models.RawModel;
 import models.TexturedModel;
-import normalMappingObjConverter.NormalMappedObjLoader;
 
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector2f;
@@ -153,12 +152,12 @@ public class MainGameLoop {
 		
 		Vector4f clipPlane = new Vector4f(0f,0f,0f,0f);
 		
-		TexturedModel barrelModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("barrel", loader),
-				new ModelTexture(loader.loadTexture("barrel")));
-		barrelModel.getTexture().setNormalMap(loader.loadTexture("barrelNormal"));
-		barrelModel.getTexture().setShineDamper(20);
-		barrelModel.getTexture().setReflectivity(1);
-		normalMapEntities.add(new Entity(barrelModel, new Vector3f(75,15,-75),0,0,0,1f));
+//		TexturedModel barrelModel = new TexturedModel(NormalMappedObjLoader.loadOBJ("barrel", loader),
+//				new ModelTexture(loader.loadTexture("barrel")));
+//		barrelModel.getTexture().setNormalMap(loader.loadTexture("barrelNormal"));
+//		barrelModel.getTexture().setShineDamper(20);
+//		barrelModel.getTexture().setReflectivity(1);
+		//normalMapEntities.add(new Entity(barrelModel, new Vector3f(75,15,-75),0,0,0,1f));
 		
 		
 		ParticleTexture particleTexture = new ParticleTexture(loader.loadTexture("particleAtlas"), 4, false);
@@ -174,15 +173,14 @@ public class MainGameLoop {
 			camera.move();
 			picker.update();
 			
-			system.generateParticles(player.getPosition());
-			ParticleMaster.update(camera);
-
+			//system.generateParticles(player.getPosition());
+			//ParticleMaster.update(camera);
 			renderer.processEntity(player);
 			renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, clipPlane);
 			
-			ParticleMaster.renderParticle(camera);
+			//ParticleMaster.renderParticle(camera);
 			//guiRenderer.render(guis);
-			TextMaster.render();
+			//TextMaster.render();
 			DisplayManager.updateDisplay();
 		}
 
