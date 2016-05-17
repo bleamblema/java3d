@@ -59,7 +59,7 @@ public class MainGameLoop {
 		List<Entity> entities = new ArrayList<Entity>();
 		List<Entity> normalMapEntities = new ArrayList<Entity>();
 		Random random = new Random();
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 500; i++) {
 			float x = random.nextFloat() * 400;
 			float z = random.nextFloat() * -400;
 			float y = terrain.getHeightOfTerrain(x, z);
@@ -68,7 +68,7 @@ public class MainGameLoop {
 		}
 
 		List<Light> lights = new ArrayList<Light>();
-		Light sun = new Light(new Vector3f(0, 1000000, 0), new Vector3f(1f, 1f, 1f));
+		Light sun = new Light(new Vector3f(1000000, 1500000, -1000000), new Vector3f(1.3f, 1.3f, 1.3f));
 		lights.add(sun);
 		
 		List<GuiTexture> guiTextures = new ArrayList<GuiTexture>();
