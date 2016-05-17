@@ -79,7 +79,8 @@ public class MainGameLoop {
 		//guiTextures.add(shadowMap);
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 
-		Fbo fbo = new Fbo(Display.getWidth(), Display.getHeight(), Fbo.DEPTH_RENDER_BUFFER);
+		Fbo multisampleFbo = new Fbo(Display.getWidth(), Display.getHeight());
+		Fbo outputFbo = new Fbo(Display.getWidth(), Display.getHeight(), Fbo.DEPTH_TEXTURE);
 		PostProcessing.init(loader);
 		
 		while (!Display.isCloseRequested()) {
@@ -89,17 +90,19 @@ public class MainGameLoop {
 			renderer.renderShadowMap(entities, sun);
 			renderer.processEntity(player);
 
-			fbo.bindFrameBuffer();
+			multisampleFbo.bindFrameBuffer();
 			renderer.renderScene(entities, normalMapEntities, terrains, lights, camera, new Vector4f(0f,0f,0f,0f));
-			fbo.unbindFrameBuffer();
-			PostProcessing.doPostProcessing(fbo.getColourTexture());
+			multisampleFbo.unbindFrameBuffer();
+			multisampleFbo.resolveToFbo(outputFbo);
+			PostProcessing.doPostProcessing(outputFbo.getColourTexture());
 			
 			guiRenderer.render(guiTextures);
 			DisplayManager.updateDisplay();
 		}
 
 		PostProcessing.cleanUp();
-		fbo.cleanUp();
+		outputFbo.cleanUp();
+		multisampleFbo.cleanUp();
 		guiRenderer.cleanUp();
 		renderer.cleanUp();
 		loader.cleanUp();
