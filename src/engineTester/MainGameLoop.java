@@ -74,7 +74,7 @@ public class MainGameLoop {
 		List<GuiTexture> guiTextures = new ArrayList<GuiTexture>();
 		GuiTexture shadowMap = new GuiTexture(renderer.getShadowMaptexture(), 
 				new Vector2f(0.5f, 0.5f), new Vector2f(0.5f, 0.5f));
-		guiTextures.add(shadowMap);
+		//guiTextures.add(shadowMap);
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 
 		
